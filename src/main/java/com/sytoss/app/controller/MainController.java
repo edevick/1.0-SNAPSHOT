@@ -1,8 +1,10 @@
 package com.sytoss.app.controller;
 
 import com.sytoss.app.exceptions.NotFoundException;
+import com.sytoss.app.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
@@ -60,10 +62,17 @@ public class MainController {
 
    }
 
-   /* @GetMapping(value = {"/"})
-    public String welcomePage(WebRequest webRequest, Model model) {
+   @GetMapping(value = {"/"})
+    public String welcomePage(Model model) {
+       model.addAttribute("user", new User());
         return "Main";
-    }*/
+    }
+
+    @PostMapping("/user")
+    public String updateUser(@ModelAttribute User user, Model model) {
+        model.addAttribute("user", user);
+        return "Users";
+    }
 
 /*    @GetMapping
     @ResponseStatus(HttpStatus.FORBIDDEN)
@@ -71,13 +80,7 @@ public class MainController {
         return "403Page";
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    @ResponseBody
-    public User updateUser(@PathVariable("id") String id, @RequestBody User user) {
-        logger.debug("I am in the controller and got ID: " + id.toString());
-        logger.debug("I am in the controller and got user name: " + user.toString());
-        return new User();
-    }*/
+*/
 
 
 }

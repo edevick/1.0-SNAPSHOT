@@ -20,6 +20,7 @@ public class User {
     @GenericGenerator(name = "native", strategy = "native")
     @Column(name = "id", nullable = false, unique = true)
     private Long userId;
+    private String userName;
 
     @Column(name = "login", nullable = false, unique = true)
     private String login;
